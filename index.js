@@ -57,6 +57,10 @@ function buildAccount() {
             console.log(err)
         })
 
-    }).catch((err) => console.log(err))
+        console.log(chalk.green("Tudo certo! Sua conta foi criada com sucesso."))
+        operation()
+
+    })
+    .catch((err) => console.log(err))
 
 }
