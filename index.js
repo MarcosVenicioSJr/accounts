@@ -41,7 +41,12 @@ function buildAccount() {
             message: 'Digite um nome para sua conta:'
         }
     ]).then((answer) => {
-        console.log(answer['accountName'])
+        const accountNameName = answer['accountName']
+        console.info(accountNameName)
+
+        if(!fs.existsSync('accounts')){
+            fs.mkdirSync('accounts')
+        }
 
     }).catch((err) => console.log(err))
 
