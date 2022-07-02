@@ -22,6 +22,15 @@ function operation() {
 
         if (action === "Criar Conta") {
             createAccount()
+        } else if(action === "Consultar Saldo"){
+
+        } else if(action === "Depositar"){
+
+        }else if(action === "Sacar"){
+
+        }else if(action === "Sair"){
+            console.log(chalk.bgBlueBright.black("Obrigado por usar o nosso banco!"))
+            process.exit()
         }
 
     })
@@ -51,6 +60,7 @@ function buildAccount() {
         if(fs.existsSync(`accounts/${accountName}.json`)){
             console.log(chalk.bgRed.black("Está conta já existe. Escolha outro nome."))
             buildAccount()
+            return
         }
 
         fs.writeFileSync(`accounts/${accountName}.json`, '{"balance": 0}', function(err) {
