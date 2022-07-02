@@ -7,7 +7,7 @@ operation()
 function operation() {
     inquirer.prompt([{
         type: 'list',
-        name: 'accounts',
+        name: 'action',
         message: 'Selecione a opção desejada',
         choices: [
             'Criar Conta',
@@ -17,6 +17,10 @@ function operation() {
             'Sair'
         ]
     },
-    ]).then()
-    .catch(err => console.log(err))
+    ]).then((answer) => {
+        const action = answer['action']
+        console.log(action)
+    })
+        .catch((err) => console.log(err))
 }
+
