@@ -53,6 +53,10 @@ function buildAccount() {
             buildAccount()
         }
 
+        fs.writeFileSync(`accounts/${accountName}.json`, '{"balance": 0}', function(err) {
+            console.log(err)
+        })
+
     }).catch((err) => console.log(err))
 
 }
