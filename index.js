@@ -23,7 +23,7 @@ function operation() {
         if (action === "Criar Conta") {
             createAccount()
         } else if (action === "Consultar Saldo") {
-
+            getAccountBalance()
         } else if (action === "Depositar") {
             deposit()
         } else if (action === "Sacar") {
@@ -141,4 +141,8 @@ function getAccount(accountName) {
     })
 
     return JSON.parse(accountJson)
+}
+
+function getAccountBalance(accountName){
+    
 }
