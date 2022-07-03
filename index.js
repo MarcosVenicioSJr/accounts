@@ -166,5 +166,27 @@ function getAccountBalance() {
 }
 
 function  withdraw(){
-    
+    inquirer.prompt([
+        {
+            name: 'accountName',
+            message: 'Qual o nome da sua conta? '
+        },
+    ]).then((answer) => {
+        const accountName = answer['accountName']
+
+        if(!checkAccount(accountName)){
+            return withdraw()
+        }
+
+        inquirer.prompt([
+            {
+                name: 'account',
+                message: 'Qual valor que você deseja sacar? '
+            },
+        ]).then((answer) => {
+
+        }).catch(err => console.log(err))
+
+    })
+    .catch(err => console.log(err))
 }
