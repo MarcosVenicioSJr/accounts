@@ -86,6 +86,20 @@ function deposit(){
         if(!checkAccount(accountName)){
             return deposit()
         }
+        
+        inquirer.prompt([
+            {
+                name: 'amount',
+                message: 'Quanto você deseja depositar? '
+            },
+        ]).then((answer) => {
+            const amount = answer['amount']
+            operation()
+        })
+        .catch(err => console.log(err))
+
+
+
     })
     .catch(err => console.log(err))
 }
@@ -97,4 +111,12 @@ function checkAccount(accountName){
     }
 
     return true
+}
+
+function addAmount(accountName, amount){
+
+}
+
+function getAccount(accountName){
+    const accountJson = fs.readFileSync(`accounts/${accountName}.json`)
 }
