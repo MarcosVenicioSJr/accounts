@@ -82,8 +82,8 @@ function deposit(){
             message: 'Qual conta você deseja depositar?'
         }
     ]).then((answer) => {
-        const action = answer['accountName']
-        if(fs.existsSync(`accounts/${action}`)){
+        const accountName = answer['accountName']
+        if(fs.existsSync(`accounts/${accountName}`)){
 
         }
     })
