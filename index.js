@@ -94,6 +94,7 @@ function deposit(){
             },
         ]).then((answer) => {
             const amount = answer['amount']
+            addAmount(accountName, amount)
             operation()
         })
         .catch(err => console.log(err))
@@ -115,8 +116,20 @@ function checkAccount(accountName){
 
 function addAmount(accountName, amount){
 
+    const accountData = getAccount(accountName)
+    if(!amount){
+        console.log(chalk.bgRed.black("Ocorreu um erro. Tente novamente mais tarde."))
+        return deposit()
+    }
+    accountData.balance = parseFloat(amount) + parseFloat(accountData.balance)
+
 }
 
 function getAccount(accountName){
-    const accountJson = fs.readFileSync(`accounts/${accountName}.json`)
+    const accountJson = fs.readFileSync(`accounts/${accountName}.json`, {
+        encoding: 'utf-8',
+        flag: 'r'
+    })
+
+    return JSON.parse(accountJson)
 }
