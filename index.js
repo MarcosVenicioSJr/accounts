@@ -186,7 +186,7 @@ function  withdraw(){
         ]).then((answer) => {
             const amount = answer['amount']
             
-           removeAccount(accountName, amount)
+           removeAmount(accountName, amount)
 
         }).catch(err => console.log(err))
 
@@ -194,6 +194,18 @@ function  withdraw(){
     .catch(err => console.log(err))
 }
 
-function removeAccount(){
+function removeAmount(accountName, amount){
 
+    const accountData = getAccount(accountName)
+
+    if(!amount){
+        console.log(chalk.bgRed.black("Ocorreu um erro, tente novamente mais tarde."))
+        return withdraw()
+    }
+
+    if(accountData.balance < amount){
+        console.log(chalk.bgRed.black("Valor indiponível."))
+        return withdraw()
+    }
+    
 }
