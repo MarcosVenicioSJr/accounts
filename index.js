@@ -213,7 +213,7 @@ function removeAmount(accountName, amount) {
     fs.writeFileSync(
         `accounts/${accountName}.json`,
         JSON.stringify(accountData),
-        function(err) {
+        function (err) {
             console.log(err)
         }
     )
