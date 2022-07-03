@@ -109,6 +109,7 @@ function checkAccount(accountName) {
     if (!fs.existsSync(`accounts/${accountName}.json`)) {
         console.log(chalk.bgRed.black("Esta conta não existe. Escolha outra conta."))
         return false
+
     }
 
     return true
@@ -143,6 +144,19 @@ function getAccount(accountName) {
     return JSON.parse(accountJson)
 }
 
-function getAccountBalance(accountName){
-    
+function getAccountBalance() {
+    inquirer.prompt([
+        {
+            name: 'accountName',
+            message: 'Digite o nome da sua conta'
+        },
+    ]).then((answer) => {
+        const accountName = answer['accountName']
+       
+        if(!checkAccount(accountName)){
+            return getAccountBalance()
+        }
+
+
+    }).catch(err => console.log(err))
 }
