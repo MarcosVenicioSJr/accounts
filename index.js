@@ -83,15 +83,18 @@ function deposit(){
         }
     ]).then((answer) => {
         const accountName = answer['accountName']
-        if(fs.existsSync(`accounts/${accountName}`)){
-
+        if(!checkAccount(accountName)){
+            return deposit()
         }
     })
-    .catch()
+    .catch(err => console.log(err))
 }
 
 function checkAccount(accountName){
     if(!fs.existsSync(`accounts/${accountName}.json`)){
         console.log(chalk.bgRed.black("Esta conta não existe. Escolha outra conta."))
+        return false
     }
+
+    return true
 }
