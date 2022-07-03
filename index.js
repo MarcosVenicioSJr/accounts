@@ -180,13 +180,20 @@ function  withdraw(){
 
         inquirer.prompt([
             {
-                name: 'account',
+                name: 'amount',
                 message: 'Qual valor que você deseja sacar? '
             },
         ]).then((answer) => {
+            const amount = answer['amount']
+            
+           removeAccount(accountName, amount)
 
         }).catch(err => console.log(err))
 
     })
     .catch(err => console.log(err))
+}
+
+function removeAccount(){
+
 }
