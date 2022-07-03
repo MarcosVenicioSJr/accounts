@@ -25,7 +25,7 @@ function operation() {
         } else if(action === "Consultar Saldo"){
 
         } else if(action === "Depositar"){
-
+            deposit()
         }else if(action === "Sacar"){
 
         }else if(action === "Sair"){
@@ -73,4 +73,19 @@ function buildAccount() {
     })
     .catch((err) => console.log(err))
 
+}
+
+function deposit(){
+    inquirer.prompt([
+        {
+            name: 'accountName',
+            message: 'Qual conta você deseja depositar?'
+        }
+    ]).then((answer) => {
+        const action = answer['accountName']
+        if(fs.existsSync(`accounts/${action}`)){
+
+        }
+    })
+    .catch()
 }
