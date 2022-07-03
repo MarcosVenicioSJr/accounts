@@ -27,7 +27,7 @@ function operation() {
         } else if (action === "Depositar") {
             deposit()
         } else if (action === "Sacar") {
-
+            withdraw()
         } else if (action === "Sair") {
             console.log(chalk.bgBlueBright.black("Obrigado por usar o nosso banco!"))
             process.exit()
@@ -157,6 +157,14 @@ function getAccountBalance() {
             return getAccountBalance()
         }
 
+        const accountData = getAccount(accountName)
+        console.log(chalk.bgGreen.black(`O saldo da sua conta é R$${accountData.balance}`))
+
+        operation()
 
     }).catch(err => console.log(err))
+}
+
+function  withdraw(){
+    
 }
